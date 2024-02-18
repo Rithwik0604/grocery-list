@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='var.css)}}">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='addEdit.css)}}">
+
+</head>
+
+
+<style>
+    form {
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+
+    }
+
+    .inputs {
+        /* background-color: var(--secondary); */
+        margin: 1%;
+        padding: 1rem;
+
+        font-size: large;
+
+        border-radius: 7px;
+
+        border: 3px solid var(--secondary);
+    }
+
+
+    .submit {
+        background-color: var(--secondary);
+        color: var(--fg);
+
+        border: none;
+        border-radius: 7px;
+
+        padding: 5%;
+
+        filter: brightness(90%);
+
+        cursor: pointer;
+        margin-top: 5%;
+
+        scale: 1.3;
+
+    }
+
+    .submit:hover {
+        filter: brightness(100%);
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--fg);
+    }
+
+    .buttonContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 20rem;
+        height: 5rem;
+
+        /* border: 1px solid yellow; */
+
+    }
+
+    @media screen and (max-width: 767px) {
+        .inputs{
+            margin: 3%;
+        }
+    }
+</style>
+
+
+
+<body>
+
+    {% extends "base.html" %}
+
+    {% block content %}
+
+    <form action="{{url_for('add')}}" method="post">
+        <input class="inputs" type="text" name="item" placeholder="Item"> <!-- Added name attribute -->
+        <input class="inputs" type="text" name="quantity" placeholder="Quantity"> <!-- Added name attribute -->
+        <input class="inputs" type="text" name="replacement" placeholder="Replacement"> <!-- Added name attribute -->
+        <!-- <label for="dropdown">Category</label> -->
+        <select class="inputs" id="dropdown" name="category">
+            <option value="None" disabled selected>Choose a Category</option>
+            <option value="Fruit & Vegetables">Fruit & Vegetables</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Poultry">Poultry</option>
+            <option value="Pastas, Grains and sauces">Pastas, Grains and sauces</option>
+            <option value="Frozen Foods">Frozen Foods</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Breads">Breads</option>
+            <option value="Other">Other</option>
+
+        </select>
+        <div class="buttonContainer">
+            <button class="submit">
+                <a href="{{url_for('home')}}">Go Back</a>
+            </button>
+            <button class="submit" type="submit">Add</button>
+
+
+        </div>
+
+
+    </form>
+
+    {% endblock content %}
+
+</body>
+
+</html>

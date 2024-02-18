@@ -1,0 +1,121 @@
+:root {
+    --bg: #28282b;
+    --fg: white;
+    --secondary: #36454f;
+
+    --thumb: rgba(255, 255, 255, 0.646);
+}
+
+
+::-webkit-scrollbar{
+
+    background-color: var(--secondary);
+
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: var(--thumb);
+
+    border-radius: 2rem;
+}
+
+::-webkit-scrollbar-thumb:active{
+    --thumb: white;
+    background-color: var(--thumb);
+
+    border-radius: 2rem;
+}
+
+
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    margin: 0;
+
+    overflow-x: hidden;
+}
+
+body.light {
+    --bg: #d7d7d4;
+    --fg: black;
+    --secondary: #c9bab0;
+}
+
+
+.header{
+    background-color: var(--secondary);
+
+    margin: 0;
+    padding: 2%;
+
+    user-select: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.innerHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 10rem;
+
+}
+
+.link{
+    color: var(--fg);
+    text-decoration: none;
+
+    font-size: xx-large;
+
+}
+
+
+#basketIcon{
+    opacity: 0;
+    transition: all 100ms ease;
+}
+
+.link:hover ~ #basketIcon{
+    opacity: 1;
+}
+
+.theme{
+    background-color: var(--secondary);
+
+    border: none;
+    border-radius: 50%;
+
+    padding: 1%;
+
+    color: var(--fg);
+
+    /* position: fixed;
+    top:  1%;
+    right: 1%; */
+
+    cursor: pointer;
+
+    text-align: center;
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .theme{
+        padding: 2%;
+    }
+}

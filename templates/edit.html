@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit List</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='addEdit.css)}}">
+
+</head>
+
+<body>
+
+    {% extends "base.html" %}
+
+    {% block content %}
+
+    <form action="{{url_for('edit')}}" method="post">
+        <input class="inputs" type="text" name="item" placeholder="Item" value="{{result[0]}}">
+        <!-- Added name attribute -->
+        <input class="inputs" type="text" name="quantity" placeholder="Quantity" value="{{result[1]}}">
+        <!-- Added name attribute -->
+        <input class="inputs" type="text" name="replacement" placeholder="Replacement" value="{{result[2]}}">
+        <!-- Added name attribute -->
+        <!-- <label for="dropdown">Category</label> -->
+        <select class="inputs" id="dropdown" name="category">
+            {% set categoryList = ["Fruit & Vegetables","Dairy","Poultry","Pastas, Grains and sauces","Frozen Foods"
+            ,"Snacks","Breads","Other"] %}
+
+            <option value="None" disabled selected>Choose a Category</option>
+            {% for cat in categoryList %}
+            {% if result[3] == cat %}
+            <option value="{{cat}}" selected>{{cat}}</option>
+            {% else %}
+            <option value="{{cat}}">{{cat}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <div class="buttonContainer">
+            <button class="submit" type="submit">Confirm</button>
+
+
+            <button class="submit">
+                <a href="{{url_for('home')}}">Go Back</a>
+            </button>
+        </div>
+
+        <input id="got" class="inputs" type="text" name="got" value="{{result[4]}}" style="visibility: hidden;opacity: 0;" >
+        <input class="inputs" type="text" name="old_item" placeholder="Item" value="{{result[0]}}" style="visibility: hidden;opacity: 0;">
+        <input class="inputs" type="text" name="old_category" placeholder="Item" value="{{result[3]}}" style="visibility: hidden;opacity: 0;">
+
+    </form>
+
+    {% endblock content %}
+
+</body>
+
+</html>
